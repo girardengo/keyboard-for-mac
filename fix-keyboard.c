@@ -1,13 +1,3 @@
-// alterkeys.c
-// http://osxbook.com
-//
-// Complile using the following command line:
-//     gcc -Wall -o alterkeys alterkeys.c -framework ApplicationServices
-//
-// You need superuser privileges to create the event tap, unless accessibility
-// is enabled. To do so, select the "Enable access for assistive devices"
-// checkbox in the Universal Access system preference pane.
-
 #include <ApplicationServices/ApplicationServices.h>
 
 // This callback will be invoked every time there is a keystroke.
@@ -24,7 +14,6 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
     CGKeyCode keycode = (CGKeyCode)CGEventGetIntegerValueField(
                                        event, kCGKeyboardEventKeycode);
 
-    fprintf(stdout, "tapped: &d\n",keycode);
     if (keycode == (CGKeyCode)10)
         keycode = (CGKeyCode)50;
     else if (keycode == (CGKeyCode)50)
